@@ -13,6 +13,7 @@
 
 import { useEffect, useState } from "react";
 import DataContext from "./DataContext";
+import PropTypes from "prop-types";
 
 export const DataProvider = ({ children }) => {
   const [data, setData] = useState([]);
@@ -22,7 +23,7 @@ export const DataProvider = ({ children }) => {
   useEffect(() => {
     const controller = new AbortController();
     const signal = controller.signal;
-    fetch("https://fakestoreapi.com/products", { signal })
+    fetch("https://fakestoreapi.com/products", { signal, mode: "cors" })
       .then((response) => {
         if (response.status >= 400) {
           throw new Error("server error");
@@ -47,4 +48,8 @@ export const DataProvider = ({ children }) => {
   const value = { data, error, loading };
 
   return <DataContext.Provider value={value}>{children}</DataContext.Provider>;
+};
+
+DataProvider.propTypes = {
+  children: PropTypes.node.isRequired,
 };
