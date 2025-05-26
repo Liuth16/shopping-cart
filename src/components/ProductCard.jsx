@@ -7,7 +7,7 @@ import { useCart } from "../features/useHooks";
 
 export const ProductCard = ({ product }) => {
   const { title, price, image, rating, id, description } = product;
-  const { addToCart } = useCart();
+  const { addToCart, cart } = useCart();
   const [quantity, setQuantity] = useState(1);
 
   const handleQuantityChange = (e) => {
@@ -40,6 +40,7 @@ export const ProductCard = ({ product }) => {
       image,
     };
     addToCart(productToCart, quantity);
+    console.log(cart)
   };
 
   return (

@@ -4,11 +4,17 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
 import App from "./App.jsx";
 import routes from "./routes.jsx";
+import { DataProvider } from "./features/DataProvider.jsx";
+import CartProvider from "./features/CartProvider.jsx";
 
 const router = createBrowserRouter(routes);
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <DataProvider>
+      <CartProvider>
+        <RouterProvider router={router} />
+      </CartProvider>
+    </DataProvider>
   </StrictMode>
 );
