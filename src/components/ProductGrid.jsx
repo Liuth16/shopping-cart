@@ -1,4 +1,4 @@
-import { useData } from "../features/useData";
+import { useData } from "../features/useHooks";
 import { ProductCard } from "./ProductCard";
 import styles from "../styles/productCard.module.css";
 

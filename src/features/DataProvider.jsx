@@ -12,7 +12,7 @@
 // }
 
 import { useEffect, useState } from "react";
-import DataContext from "./DataContext";
+import { DataContext } from "./allContext";
 import PropTypes from "prop-types";
 
 export const DataProvider = ({ children }) => {
