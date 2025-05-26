@@ -10,7 +10,11 @@ export default function CartProvider({ children }) {
       if (existing) {
         return prev.map((item) =>
           item.id === product.id
-            ? { ...item, quantity: item.quantity + quantity }
+            ? {
+                ...item,
+                quantity: item.quantity + quantity,
+                total: (item.quantity + quantity) * item.price,
+              }
             : item
         );
       }
@@ -24,6 +28,7 @@ export default function CartProvider({ children }) {
         description,
         image,
         quantity,
+        total: price * quantity,
       };
 
       return [...prev, newItem];
@@ -38,7 +43,11 @@ export default function CartProvider({ children }) {
     setCart((prev) =>
       prev.map((item) =>
         item.id === productId
-          ? { ...item, quantity: Math.max(1, quantity) }
+          ? {
+              ...item,
+              quantity: Math.max(1, quantity),
+              total: item.price * Math.max(1, quantity),
+            }
           : item
       )
     );

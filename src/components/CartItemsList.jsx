@@ -1,11 +1,8 @@
-import { useCart } from "../features/useHooks";
 import { Button } from "./Button";
 import { InputField } from "./InputField";
 import styles from "../styles/cartItemsList.module.css";
 
-export const CartItemsList = () => {
-  const { cart, removeFromCart, updateQuantity } = useCart();
-
+export const CartItemsList = ({ cart, removeFromCart, updateQuantity }) => {
   const handleQuantityChange = (e, productId) => {
     const value = parseInt(e.target.value);
     if (!isNaN(value) && value >= 1) {
@@ -26,6 +23,9 @@ export const CartItemsList = () => {
             <h3>{item.title}</h3>
             <p>{item.description}</p>
             <p className={styles.price}>${item.price}</p>
+            <p>
+              <b>Total: $ {item.total.toFixed(2)}</b>
+            </p>
 
             <InputField
               label="Quantity"
