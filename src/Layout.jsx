@@ -4,43 +4,45 @@ import styles from "./styles/layout.module.css";
 const Layout = () => {
   return (
     <>
-      <header>
-        <nav>
-          <ul className={styles["testList"]}>
+      <header className={styles.header}>
+        <nav className={styles.nav}>
+          <ul className={styles.navList}>
             <li>
-              <Link to="/">Home</Link>
+              <Link to="/" className={styles.navLink}>Home</Link>
             </li>
             <li>
-              <Link to="/products">Products</Link>
+              <Link to="/products" className={styles.navLink}>Products</Link>
             </li>
             <li>
-              <Link to="/cart">Cart</Link>
+              <Link to="/cart" className={styles.navLink}>Cart</Link>
             </li>
           </ul>
         </nav>
       </header>
-      <main>
-        <Outlet /> {/* This renders the matched child route */}
+      <main className={styles.main}>
+        <Outlet />
       </main>
-      <footer>
-        <div className="footerLinksContainer">
-          <a href="#">Link 1</a>
-          <a href="#">Link 1</a>
-          <a href="#">Link 1</a>
-          <a href="#">Link 1</a>
+      <footer className={styles.footer}>
+        <div className={styles.footerContent}>
+          <div className={styles.footerLinksContainer}>
+            <a href="#">About Us</a>
+            <a href="#">Contact</a>
+            <a href="#">Shipping Policy</a>
+            <a href="#">Returns & Refunds</a>
+          </div>
+          <div className={styles.footerSocialsContainer}>
+            <a href="#">
+              <img src="../src/assets/twitter.svg" alt="Twitter" />
+            </a>
+            <a href="#">
+              <img src="../src/assets/instagram.svg" alt="Instagram" />
+            </a>
+            <a href="#">
+              <img src="../src/assets/facebook.svg" alt="Facebook" />
+            </a>
+          </div>
         </div>
-        <div className="footerSocialsContainer">
-          <a href="">
-            <img src="../src/assets/twitter.svg" alt="" />
-          </a>
-          <a href="">
-            <img src="../src/assets/instagram.svg" alt="" />
-          </a>
-          <a href="">
-            <img src="../src/assets/facebook.svg" alt="" />
-          </a>
-        </div>
-        <p>© 2025 My Store</p>
+        <p className={styles.copyright}>© 2025 My Store</p>
       </footer>
     </>
   );

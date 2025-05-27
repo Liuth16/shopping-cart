@@ -1,0 +1,30 @@
+.test{
+    background-color: red;
+}
+
+.cartContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  display: grid;
+  grid-template-columns: 1fr 350px;
+  gap: 2rem;
+}
+
+.cartHeader {
+  grid-column: 1 / -1;
+  margin-bottom: 1rem;
+}
+
+.cartHeader h1 {
+  font-size: 2rem;
+  color: #2c3e50;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .cartContainer {
+    grid-template-columns: 1fr;
+    padding: 1rem;
+  }
+}

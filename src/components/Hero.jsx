@@ -1,5 +1,6 @@
 import styles from "../styles/hero.module.css";
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
 
 export const Hero = () => {
   useEffect(() => {
@@ -14,12 +15,19 @@ export const Hero = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
   return (
     <section className={styles["heroText"]}>
       <div className={styles["hero-bg"]}></div>
       <div className={styles["content"]}>
-        <h1>Hero Section</h1>
-        <p>Some cool text over the image</p>
+        <h1 className={styles["title"]}>Discover Your Style</h1>
+        <p className={styles["subtitle"]}>
+          Explore our curated collection of premium products. 
+          Quality meets style in every piece we offer.
+        </p>
+        <Link to="/products" className={styles["ctaButton"]}>
+          Shop Now
+        </Link>
       </div>
     </section>
   );
