@@ -1,6 +1,6 @@
 .heroText {
   position: relative;
-  height: 80vh;
+  height: 50vh;
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -21,7 +21,7 @@
 }
 
 .hero-bg::after {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -114,11 +114,11 @@
   .title {
     font-size: 2.5rem;
   }
-  
+
   .subtitle {
     font-size: 1.2rem;
   }
-  
+
   .heroText {
     height: 70vh;
   }

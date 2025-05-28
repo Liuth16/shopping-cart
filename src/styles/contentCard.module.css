@@ -4,8 +4,7 @@
   gap: 2rem;
   padding: 4rem 2rem;
   max-width: 1200px;
-  margin: 0 auto;
-  background-color: #f8f9fa;
+  margin: 2rem auto;
 }
 
 .storeFeature {
@@ -93,7 +92,7 @@
     padding: 2rem 1rem;
     gap: 1.5rem;
   }
-  
+
   .storeFeature,
   .testimonial {
     padding: 1.5rem;
