@@ -32,13 +32,13 @@ const Layout = () => {
           </div>
           <div className={styles.footerSocialsContainer}>
             <a href="#">
-              <img src="../src/assets/twitter.svg" alt="Twitter" />
+              <img src="/twitter.svg" alt="Twitter" />
             </a>
             <a href="#">
-              <img src="../src/assets/instagram.svg" alt="Instagram" />
+              <img src="/instagram.svg" alt="Instagram" />
             </a>
             <a href="#">
-              <img src="../src/assets/facebook.svg" alt="Facebook" />
+              <img src="/facebook.svg" alt="Facebook" />
             </a>
           </div>
         </div>

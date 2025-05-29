@@ -9,19 +9,19 @@ const HomePage = () => {
       <section className={styles.featuresSection}>
         <ContentCard
           contentClass="storeFeature"
-          icon="../src/assets/dollar.svg"
+          icon="/dollar.svg"
           title="Best Prices"
           text="We offer competitive prices with a price match guarantee. If you find a better deal elsewhere, we'll match it!"
         />
         <ContentCard
           contentClass="storeFeature"
-          icon="../src/assets/truck-side.svg"
+          icon="/truck-side.svg"
           title="Fast Delivery"
           text="Enjoy quick and reliable shipping. Most orders are delivered within 3-5 business days."
         />
         <ContentCard
           contentClass="storeFeature"
-          icon="../src/assets/gem.svg"
+          icon="/gem.svg"
           title="Premium Quality"
           text="We carefully select each product to ensure the highest quality standards for our customers."
         />
@@ -29,17 +29,17 @@ const HomePage = () => {
       <section className={styles.testimonialsSection}>
         <ContentCard
           contentClass="testimonial"
-          icon="../src/assets/user1.jpg"
+          icon="/user1.jpg"
           text='"The customer service team was incredibly helpful and resolved my issue within minutes. Highly recommended!"'
         />
         <ContentCard
           contentClass="testimonial"
-          icon="../src/assets/user2.jpg"
+          icon="/user2.jpg"
           text='"I was amazed by the quality of the products and the competitive prices. Will definitely shop here again!"'
         />
         <ContentCard
           contentClass="testimonial"
-          icon="../src/assets/user3.jpg"
+          icon="/user3.jpg"
           text='"Fast shipping and excellent packaging. The products arrived in perfect condition. Great shopping experience!"'
         />
       </section>
