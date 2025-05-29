@@ -86,3 +86,10 @@
   font-size: 1.1rem;
   margin: 0;
 }
+
+@media only screen and (max-width: 400px){
+.cartItem {
+  padding: 1rem;
+  gap: 0rem;
+}
+}
