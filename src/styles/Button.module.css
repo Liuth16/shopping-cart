@@ -1,0 +1,19 @@
+.addToCart {
+    margin-top: 0.75rem;
+    padding: 0.75rem 2rem;
+    background: #2a9d8f;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+    box-shadow: 0 2px 8px rgba(42, 157, 143, 0.08);
+  }
+  
+  .addToCart:hover,
+  .addToCart:focus {
+    background: #21867a;
+    transform: translateY(-2px) scale(1.03);
+  }

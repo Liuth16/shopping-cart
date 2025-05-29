@@ -1,0 +1,27 @@
+.productInput {
+    width: 80px;
+    padding: 0.5rem;
+    border: 1.5px solid #e0e0e0;
+    border-radius: 6px;
+    font-size: 1rem;
+    margin: 0.5rem 0;
+    text-align: center;
+    transition: border-color 0.2s;
+    outline: none;
+    background: #f8f9fa;
+  }
+  
+  .productInput:focus {
+    border-color: #2a9d8f;
+    background: #fff;
+  }
+
+  .productLabel {
+    display: block;
+    font-size: 0.98rem;
+    font-weight: 500;
+    color: #2c3e50;
+    margin-bottom: 0.25rem;
+    letter-spacing: 0.01em;
+    text-align: center;
+  }

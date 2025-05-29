@@ -60,8 +60,10 @@ export const ProductCard = ({ product }) => {
         step={1}
         onChange={handleQuantityChange}
         onBlur={handleBlur}
+        inputClass={"productInput"}
+        labelClass={"productLabel"}
       />
-      <Button text={"Add to cart"} onClick={handleAddToCart} />
+      <Button text={"Add to cart"} onClick={handleAddToCart} buttonClass="addToCart" />
     </div>
   );
 };
