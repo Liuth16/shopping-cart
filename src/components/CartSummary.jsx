@@ -1,4 +1,3 @@
-import { Button } from "./Button";
 import styles from "../styles/cartSummary.module.css";
 
 export const CartSummary = ({ cart }) => {

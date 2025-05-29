@@ -2,8 +2,6 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 2rem;
-  padding: 2rem;
-  background: #f8f9fa;
 }
 
 .productCard {
@@ -20,6 +18,7 @@
   transition: transform 0.15s, box-shadow 0.15s;
   text-align: center;
   position: relative;
+  justify-content: center;
 }
 
 .productCard:hover {
@@ -28,8 +27,8 @@
 }
 
 .productCard img {
-  width: 140px;
-  height: 140px;
+  max-width: 140px;
+  max-height: 140px;
   object-fit: contain;
   margin-bottom: 1rem;
   border-radius: 8px;
