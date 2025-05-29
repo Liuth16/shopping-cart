@@ -15,6 +15,7 @@
     pointer-events: none;
     z-index: 9999;
     transition: opacity 0.3s, top 0.3s;
+    flex-direction: column;
   }
   
   .toast.show {
@@ -23,10 +24,35 @@
     top: 3.5rem;
   }
   
-  .greenBar {
-    width: 6px;
-    height: 32px;
-    background: #2ecc71;
+  .progressBarContainer {
+    width: 100%;
+    height: 6px;
+    background: #e0f7ea;
     border-radius: 4px;
     margin-right: 1rem;
+    overflow: hidden;
+    align-self: flex-start;
+    margin-top: 0.4rem;
+  }
+  
+  .progressBar {
+    height: 100%;
+    width: 100%;
+    background: #2ecc71;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: none;
+  }
+  
+  .animate {
+    animation: progressBarAnim 1.5s linear forwards;
+  }
+  
+  @keyframes progressBarAnim {
+    from {
+      transform: scaleX(0);
+    }
+    to {
+      transform: scaleX(1);
+    }
   }
