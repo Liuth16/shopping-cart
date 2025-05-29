@@ -1,0 +1,32 @@
+.toast {
+    position: fixed;
+    top: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    min-width: 220px;
+    background: #fff;
+    color: #222;
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+    padding: 1rem 2rem 1rem 1rem;
+    display: flex;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 9999;
+    transition: opacity 0.3s, top 0.3s;
+  }
+  
+  .toast.show {
+    opacity: 1;
+    pointer-events: auto;
+    top: 3.5rem;
+  }
+  
+  .greenBar {
+    width: 6px;
+    height: 32px;
+    background: #2ecc71;
+    border-radius: 4px;
+    margin-right: 1rem;
+  }
