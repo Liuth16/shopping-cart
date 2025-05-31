@@ -15,7 +15,7 @@ const HomePage = () => {
         />
         <ContentCard
           contentClass="storeFeature"
-          icon="/truck-side.svg"
+          icon="/truck.svg"
           title="Fast Delivery"
           text="Enjoy quick and reliable shipping. Most orders are delivered within 3-5 business days."
         />
