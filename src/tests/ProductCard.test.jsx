@@ -1,4 +1,4 @@
-import { render, screen, waitFor } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { ProductCard } from "../components/ProductCard";
 import { CartContext } from "../features/allContext";
@@ -14,10 +14,10 @@ const product = {
   rating: { rate: 4.5, count: 20 },
 };
 
-function renderWithCartContext(ui, cartValue = {}) {
+function renderWithCartContext(ui, cartValue = {}, onAddToCart = () => {}) {
   return render(
     <CartContext.Provider value={cartValue}>
-      {ui}
+      {React.cloneElement(ui, { onAddToCart })}
     </CartContext.Provider>
   );
 }
@@ -64,44 +64,24 @@ describe("ProductCard", () => {
     expect(input).toHaveValue(1);
   });
 
-  it("calls addToCart with correct arguments", async () => {
+  it("calls addToCart and onAddToCart with correct arguments", async () => {
     const user = userEvent.setup();
     const addToCart = vi.fn();
+    const onAddToCart = vi.fn();
     renderWithCartContext(<ProductCard product={product} />, {
       addToCart,
       cart: [],
-    });
+    }, onAddToCart);
+
     const input = screen.getByLabelText(/quantity/i);
     await user.clear(input);
     await user.type(input, "2");
     await user.click(screen.getByRole("button", { name: /add to cart/i }));
+    
     expect(addToCart).toHaveBeenCalledWith(
       expect.objectContaining({ id: product.id }),
       2
     );
-  });
-
-  it("shows toast when item is added", async () => {
-    const user = userEvent.setup();
-    renderWithCartContext(<ProductCard product={product} />, {
-      addToCart: () => {},
-      cart: [],
-    });
-
-    // Initially toast should be in DOM but not visible
-    const toast = screen.getByText(/added to cart/i);
-    expect(toast).toBeInTheDocument();
-    expect(toast.closest('div')).toHaveStyle({ opacity: '0' });
-    
-    // Click add to cart
-    await user.click(screen.getByRole("button", { name: /add to cart/i }));
-    
-    // Toast should now be visible
-    expect(toast.closest('div')).toHaveStyle({ opacity: '1' });
-    
-    // Wait for toast to hide
-    await waitFor(() => {
-      expect(toast.closest('div')).toHaveStyle({ opacity: '0' });
-    }, { timeout: 2000 });
+    expect(onAddToCart).toHaveBeenCalled();
   });
 });

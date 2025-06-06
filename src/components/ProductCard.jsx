@@ -6,11 +6,10 @@ import { useState } from "react";
 import { useCart } from "../features/useHooks";
 import { Toast } from "./Toast";
 
-export const ProductCard = ({ product }) => {
+export const ProductCard = ({ product, onAddToCart }) => {
   const { title, price, image, rating, id, description } = product;
   const { addToCart, cart } = useCart();
   const [quantity, setQuantity] = useState(1);
-  const [showToast, setShowToast] = useState(false)
 
   const handleQuantityChange = (e) => {
     const value = e.target.value;
@@ -42,16 +41,11 @@ export const ProductCard = ({ product }) => {
       image,
     };
     addToCart(productToCart, quantity);
-    setShowToast(true)
-    setTimeout(() => {
-      setShowToast(false)
-    }, 1500);
-    console.log(cart)
+    onAddToCart();
+    console.log(cart);
   };
 
   return (
-    <>
-    <Toast message={"Added to cart!"} show={showToast}/>
     <div className={styles.productCard}>
       <img src={image} alt={title} width="100" />
       <h3>{title}</h3>
@@ -73,6 +67,5 @@ export const ProductCard = ({ product }) => {
       />
       <Button text={"Add to cart"} onClick={handleAddToCart} buttonClass="addToCart" />
     </div>
-    </>
   );
 };
