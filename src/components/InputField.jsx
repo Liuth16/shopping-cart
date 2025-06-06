@@ -1,6 +1,6 @@
 import styles from "../styles/Input.module.css"
 
-export const InputField = ({ label, id, type, onChange, value, name, inputClass, labelClass }) => {
+export const InputField = ({ label, id, type, onChange, value, name, inputClass, labelClass, onBlur }) => {
   return (
     <>
       <label htmlFor={id} className={styles[labelClass]}>{label}</label>
@@ -9,6 +9,7 @@ export const InputField = ({ label, id, type, onChange, value, name, inputClass,
         id={id}
         name={name}
         onChange={onChange}
+        onBlur={onBlur}
         value={value}
         className={styles[inputClass]}
       />
