@@ -3,6 +3,7 @@ import userEvent from "@testing-library/user-event";
 import { useContext } from "react";
 import CartProvider from "../features/CartProvider";
 import { CartContext } from "../features/allContext";
+import { describe, expect, it } from "vitest";
 
 // Dummy product
 const product = {
@@ -14,7 +15,8 @@ const product = {
 };
 
 function Consumer() {
-  const { cart, addToCart, removeFromCart, updateQuantity } = useContext(CartContext);
+  const { cart, addToCart, removeFromCart, updateQuantity } =
+    useContext(CartContext);
   return (
     <div>
       <div data-testid="cart">{JSON.stringify(cart)}</div>

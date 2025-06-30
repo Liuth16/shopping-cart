@@ -2,6 +2,7 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { ProductCard } from "../components/ProductCard";
 import { CartContext } from "../features/allContext";
+import { describe, expect, it, vi } from "vitest";
 import React from "react";
 
 // Dummy product
@@ -32,7 +33,9 @@ describe("ProductCard", () => {
     expect(screen.getByText(`$${product.price}`)).toBeInTheDocument();
     expect(screen.getByText(/rating: 4.5/i)).toBeInTheDocument();
     expect(screen.getByLabelText(/quantity/i)).toBeInTheDocument();
-    expect(screen.getByRole("button", { name: /add to cart/i })).toBeInTheDocument();
+    expect(
+      screen.getByRole("button", { name: /add to cart/i })
+    ).toBeInTheDocument();
   });
 
   it("changes quantity with input", async () => {
@@ -68,16 +71,20 @@ describe("ProductCard", () => {
     const user = userEvent.setup();
     const addToCart = vi.fn();
     const onAddToCart = vi.fn();
-    renderWithCartContext(<ProductCard product={product} />, {
-      addToCart,
-      cart: [],
-    }, onAddToCart);
+    renderWithCartContext(
+      <ProductCard product={product} />,
+      {
+        addToCart,
+        cart: [],
+      },
+      onAddToCart
+    );
 
     const input = screen.getByLabelText(/quantity/i);
     await user.clear(input);
     await user.type(input, "2");
     await user.click(screen.getByRole("button", { name: /add to cart/i }));
-    
+
     expect(addToCart).toHaveBeenCalledWith(
       expect.objectContaining({ id: product.id }),
       2

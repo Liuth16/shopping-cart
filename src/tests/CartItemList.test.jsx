@@ -1,6 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { CartItemsList } from "../components/CartItemsList";
+import { describe, expect, it, vi } from "vitest";
 
 // Mock cart data
 const mockCart = [
@@ -11,7 +12,7 @@ const mockCart = [
     price: 10.99,
     image: "test1.jpg",
     quantity: 2,
-    total: 21.98
+    total: 21.98,
   },
   {
     id: 2,
@@ -20,43 +21,45 @@ const mockCart = [
     price: 15.99,
     image: "test2.jpg",
     quantity: 1,
-    total: 15.99
-  }
+    total: 15.99,
+  },
 ];
 
 describe("CartItemsList", () => {
   it("renders empty cart message when cart is empty", () => {
     render(
-      <CartItemsList 
-        cart={[]} 
-        removeFromCart={() => {}} 
-        updateQuantity={() => {}} 
+      <CartItemsList
+        cart={[]}
+        removeFromCart={() => {}}
+        updateQuantity={() => {}}
       />
     );
-    
+
     expect(screen.getByText(/your cart is empty/i)).toBeInTheDocument();
   });
 
   it("renders cart items when cart has products", () => {
     render(
-      <CartItemsList 
-        cart={mockCart} 
-        removeFromCart={() => {}} 
-        updateQuantity={() => {}} 
+      <CartItemsList
+        cart={mockCart}
+        removeFromCart={() => {}}
+        updateQuantity={() => {}}
       />
     );
 
     // Check if all products are rendered
-    mockCart.forEach(item => {
+    mockCart.forEach((item) => {
       expect(screen.getByText(item.title)).toBeInTheDocument();
       expect(screen.getByText(item.description)).toBeInTheDocument();
- // Look for the individual price within the price element
- const priceElement = screen.getByText(new RegExp(`^\\$${item.price}$`));
- expect(priceElement).toBeInTheDocument();
- 
- // Look for the total with the "Total:" prefix
- const totalElement = screen.getByText(new RegExp(`Total: \\$${item.total.toFixed(2)}`));
- expect(totalElement).toBeInTheDocument();
+      // Look for the individual price within the price element
+      const priceElement = screen.getByText(new RegExp(`^\\$${item.price}$`));
+      expect(priceElement).toBeInTheDocument();
+
+      // Look for the total with the "Total:" prefix
+      const totalElement = screen.getByText(
+        new RegExp(`Total: \\$${item.total.toFixed(2)}`)
+      );
+      expect(totalElement).toBeInTheDocument();
     });
 
     // Check if all quantity inputs are rendered
@@ -74,12 +77,12 @@ describe("CartItemsList", () => {
   // it("calls updateQuantity when quantity is changed", async () => {
   //   const user = userEvent.setup();
   //   const updateQuantity = vi.fn();
-    
+
   //   render(
-  //     <CartItemsList 
-  //       cart={mockCart} 
-  //       removeFromCart={() => {}} 
-  //       updateQuantity={updateQuantity} 
+  //     <CartItemsList
+  //       cart={mockCart}
+  //       removeFromCart={() => {}}
+  //       updateQuantity={updateQuantity}
   //     />
   //   );
 
@@ -93,12 +96,12 @@ describe("CartItemsList", () => {
   it("calls removeFromCart when remove button is clicked", async () => {
     const user = userEvent.setup();
     const removeFromCart = vi.fn();
-    
+
     render(
-      <CartItemsList 
-        cart={mockCart} 
-        removeFromCart={removeFromCart} 
-        updateQuantity={() => {}} 
+      <CartItemsList
+        cart={mockCart}
+        removeFromCart={removeFromCart}
+        updateQuantity={() => {}}
       />
     );
 
@@ -111,12 +114,12 @@ describe("CartItemsList", () => {
   // it("does not update quantity when invalid value is entered", async () => {
   //   const user = userEvent.setup();
   //   const updateQuantity = vi.fn();
-    
+
   //   render(
-  //     <CartItemsList 
-  //       cart={mockCart} 
-  //       removeFromCart={() => {}} 
-  //       updateQuantity={updateQuantity} 
+  //     <CartItemsList
+  //       cart={mockCart}
+  //       removeFromCart={() => {}}
+  //       updateQuantity={updateQuantity}
   //     />
   //   );
 
